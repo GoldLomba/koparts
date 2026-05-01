@@ -17,7 +17,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-text-secondary mt-4 max-w-xl mx-auto lg:mx-0">
-              Оригинальные OEM-моторы прямо с завода для{' '}
+              Новые моторы прямо с завода для{' '}
               <strong className="text-text">Matiz, Nexia, Lanos, Solaris, Accent, Rio, Cerato, Sportage</strong>{' '}
               и других моделей. Заводская гарантия, новая комплектация, доставка по всей России.
             </p>

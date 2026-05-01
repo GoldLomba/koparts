@@ -32,7 +32,7 @@ const products: Product[] = [
     subtitle: 'Бензиновый, 8-клапанный, 80 л.с.',
     price: 'от 135 000 ₽',
     features: [
-      'Новый оригинал GM Korea',
+      'Новый, поставка GM Korea',
       'Чугунный блок, надёжный SOHC',
       'Заводская гарантия 12 месяцев',
     ],
@@ -46,7 +46,7 @@ const products: Product[] = [
     subtitle: 'Бензиновый, 16V, DOHC, 107 л.с.',
     price: 'от 195 000 ₽',
     features: [
-      'Новый, оригинал Hyundai-Kia',
+      'Новый, поставка Hyundai-Kia',
       'Серия Gamma, цепной привод ГРМ',
       'Заводская консервация и упаковка',
     ],
@@ -60,7 +60,7 @@ const products: Product[] = [
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
     price: 'от 220 000 ₽',
     features: [
-      'Новый, оригинал Hyundai-Kia',
+      'Новый, поставка Hyundai-Kia',
       'Серия Gamma, цепной привод ГРМ',
       'Заводская гарантия 12 месяцев',
     ],
@@ -74,7 +74,7 @@ const products: Product[] = [
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
     price: 'от 235 000 ₽',
     features: [
-      'Новый OEM, серия Nu',
+      'Новый, серия Nu',
       'Цепной привод ГРМ — без замены ремня',
       'Установка у партнёров в Москве',
     ],
@@ -88,7 +88,7 @@ const products: Product[] = [
     subtitle: 'Бензиновый, 16V, DOHC, 150 л.с.',
     price: 'от 295 000 ₽',
     features: [
-      'Новый OEM, серия Theta II MPI',
+      'Новый, серия Theta II MPI',
       'Заводская упаковка и консервация',
       'Гарантия 12 месяцев от производителя',
     ],
@@ -106,7 +106,7 @@ export default function Products() {
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-extrabold text-text">Каталог двигателей</h2>
           <p className="text-text-secondary mt-3 max-w-2xl mx-auto">
-            Только новые оригинальные моторы Daewoo, Hyundai и KIA — все в наличии на складе в Москве.
+            Только новые моторы Daewoo, Hyundai и KIA — все в наличии на складе в Москве.
             Цены указаны без учёта доставки и навесного оборудования.
           </p>
         </div>

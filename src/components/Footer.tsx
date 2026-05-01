@@ -13,7 +13,7 @@ export default function Footer() {
           </div>
 
           <p className="text-xs text-text-secondary text-center">
-            © {new Date().getFullYear()} КорПартс. Новые оригинальные двигатели Daewoo, Hyundai, KIA. Все права защищены.
+            © {new Date().getFullYear()} КорПартс. Новые двигатели Daewoo, Hyundai, KIA. Все права защищены.
           </p>
 
           <div className="flex items-center gap-4 text-xs text-text-secondary">
