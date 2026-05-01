@@ -16,11 +16,11 @@ const products: Product[] = [
     code: 'F8CV',
     title: 'Daewoo F8CV 0.8L',
     subtitle: 'Бензиновый, 3 цилиндра, 51 л.с.',
-    price: 'от 75 000 ₽',
+    price: 'от 145 000 ₽',
     features: [
+      'Новый, в заводской упаковке',
       'Под катушку зажигания и под трамблёр',
       'Полный комплект навесного по запросу',
-      'Проверка компрессии и геометрии',
     ],
     fits: ['Daewoo Matiz', 'Chevrolet Spark'],
   },
@@ -30,11 +30,11 @@ const products: Product[] = [
     code: 'A15SMS',
     title: 'Daewoo A15SMS 1.5L',
     subtitle: 'Бензиновый, 8-клапанный, 80 л.с.',
-    price: 'от 65 000 ₽',
+    price: 'от 135 000 ₽',
     features: [
+      'Новый оригинал GM Korea',
       'Чугунный блок, надёжный SOHC',
-      'Оригинал GM Korea',
-      'Гарантия 6 месяцев',
+      'Заводская гарантия 12 месяцев',
     ],
     fits: ['Daewoo Nexia', 'Daewoo Lanos', 'ЗАЗ Chance'],
   },
@@ -44,11 +44,11 @@ const products: Product[] = [
     code: 'G4FA',
     title: 'Hyundai G4FA 1.4L',
     subtitle: 'Бензиновый, 16V, DOHC, 107 л.с.',
-    price: 'от 95 000 ₽',
+    price: 'от 195 000 ₽',
     features: [
+      'Новый, оригинал Hyundai-Kia',
       'Серия Gamma, цепной привод ГРМ',
-      'Хорошее состояние, пробег от 60 тыс. км',
-      'Комплектация по запросу',
+      'Заводская консервация и упаковка',
     ],
     fits: ['Hyundai Solaris', 'Hyundai Accent', 'KIA Rio'],
   },
@@ -58,11 +58,11 @@ const products: Product[] = [
     code: 'G4FC',
     title: 'Hyundai G4FC 1.6L',
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
-    price: 'от 110 000 ₽',
+    price: 'от 220 000 ₽',
     features: [
+      'Новый, оригинал Hyundai-Kia',
       'Серия Gamma, цепной привод ГРМ',
-      'Контрактный — Япония / Корея',
-      'Гарантия 6 месяцев',
+      'Заводская гарантия 12 месяцев',
     ],
     fits: ['Hyundai Solaris', 'Hyundai i30', 'KIA Cerato'],
   },
@@ -72,10 +72,10 @@ const products: Product[] = [
     code: 'G4FG',
     title: 'KIA G4FG 1.6L MPI',
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
-    price: 'от 115 000 ₽',
+    price: 'от 235 000 ₽',
     features: [
-      'Серия Nu, цепной ГРМ',
-      'Свежие моторы 2017–2020 г.в.',
+      'Новый OEM, серия Nu',
+      'Цепной привод ГРМ — без замены ремня',
       'Установка у партнёров в Москве',
     ],
     fits: ['KIA Rio', 'KIA Cerato', 'Hyundai Solaris II'],
@@ -86,11 +86,11 @@ const products: Product[] = [
     code: 'G4KD',
     title: 'KIA G4KD 2.0L',
     subtitle: 'Бензиновый, 16V, DOHC, 150 л.с.',
-    price: 'от 145 000 ₽',
+    price: 'от 295 000 ₽',
     features: [
-      'Серия Theta II, MPI',
-      'Контрактный, протестирован',
-      'Возможен обмен по программе trade-in',
+      'Новый OEM, серия Theta II MPI',
+      'Заводская упаковка и консервация',
+      'Гарантия 12 месяцев от производителя',
     ],
     fits: ['KIA Sportage III', 'KIA Optima', 'Hyundai ix35', 'Hyundai Sonata'],
   },
@@ -106,8 +106,8 @@ export default function Products() {
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-extrabold text-text">Каталог двигателей</h2>
           <p className="text-text-secondary mt-3 max-w-2xl mx-auto">
-            Контрактные моторы Daewoo, Hyundai и KIA — все в наличии на складе в Москве. Цены указаны без
-            учёта доставки и навесного оборудования.
+            Только новые оригинальные моторы Daewoo, Hyundai и KIA — все в наличии на складе в Москве.
+            Цены указаны без учёта доставки и навесного оборудования.
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export default function Products() {
                   {p.brand}
                 </div>
                 <div className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-md">
-                  В наличии
+                  Новый
                 </div>
                 <svg
                   className="w-24 h-24 opacity-90"
@@ -233,8 +233,8 @@ export default function Products() {
         <div className="mt-12 max-w-3xl mx-auto bg-bg-light border border-border rounded-2xl p-6 md:p-8 text-center">
           <h3 className="text-xl font-extrabold text-text">Не нашли свой двигатель?</h3>
           <p className="text-text-secondary mt-2 text-sm md:text-base">
-            Пришлите VIN или фото шильдика мотора — подберём нужную модификацию из 80+ позиций на складе и
-            под заказ из Кореи / Японии (срок 2–4 недели).
+            Пришлите VIN или фото шильдика мотора — подберём нужную модификацию из 80+ новых позиций на
+            складе или под заказ напрямую с завода Hyundai-Kia / GM Korea (срок 2–4 недели).
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
             <a

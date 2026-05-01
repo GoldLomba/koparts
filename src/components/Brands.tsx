@@ -29,7 +29,7 @@ export default function Brands() {
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-extrabold text-text">Бренды, с которыми мы работаем</h2>
           <p className="text-text-secondary mt-3">
-            Контрактные двигатели для трёх ведущих корейских марок
+            Новые оригинальные двигатели для трёх ведущих корейских марок
           </p>
         </div>
 

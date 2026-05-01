@@ -7,19 +7,19 @@ export default function Hero() {
           <div className="flex-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-green/10 text-green text-sm font-semibold px-3 py-1.5 rounded-full mb-5">
               <span className="w-2 h-2 bg-green rounded-full animate-pulse" />
-              На складе в Москве — более 80 двигателей
+              Только новые двигатели — заводская упаковка
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text leading-tight">
-              Контрактные двигатели <span className="text-primary">Daewoo</span>,{' '}
+              Новые двигатели <span className="text-primary">Daewoo</span>,{' '}
               <span className="text-primary">Hyundai</span>,{' '}
               <span className="text-primary">KIA</span>
             </h1>
 
             <p className="text-lg md:text-xl text-text-secondary mt-4 max-w-xl mx-auto lg:mx-0">
-              Бензиновые и дизельные моторы из Кореи и Японии для{' '}
+              Оригинальные OEM-моторы прямо с завода для{' '}
               <strong className="text-text">Matiz, Nexia, Lanos, Solaris, Accent, Rio, Cerato, Sportage</strong>{' '}
-              и других моделей. Гарантия, проверка перед отправкой, доставка по всей России.
+              и других моделей. Заводская гарантия, новая комплектация, доставка по всей России.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-8 justify-center lg:justify-start">
@@ -46,8 +46,8 @@ export default function Hero() {
             {/* Trust badges */}
             <div className="grid grid-cols-3 gap-4 mt-10 max-w-md mx-auto lg:mx-0">
               {[
-                { icon: '🛡️', title: 'Гарантия', sub: '6 месяцев' },
-                { icon: '🔍', title: 'Проверка', sub: 'Перед отправкой' },
+                { icon: '🛡️', title: 'Гарантия', sub: '12 месяцев' },
+                { icon: '📦', title: 'Заводская', sub: 'упаковка' },
                 { icon: '🚚', title: 'Доставка', sub: 'По всей РФ' },
               ].map((b) => (
                 <div key={b.title} className="text-center">
@@ -88,7 +88,7 @@ export default function Hero() {
               </svg>
               <div className="absolute bottom-4 left-4 right-4 bg-white/15 backdrop-blur-sm rounded-lg px-3 py-2 text-white text-xs font-semibold flex items-center justify-between">
                 <span>Daewoo · Hyundai · KIA</span>
-                <span className="bg-accent text-white px-2 py-0.5 rounded text-[10px] font-bold">В НАЛИЧИИ</span>
+                <span className="bg-accent text-white px-2 py-0.5 rounded text-[10px] font-bold">НОВЫЕ</span>
               </div>
             </div>
           </div>
