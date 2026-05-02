@@ -11,6 +11,7 @@ const DEFAULT_IMG = `${BASE}engine.jpg`;
 const IMAGE_BY_CODE: Record<string, string> = {
   F8CV:   `${BASE}engine-f8cv.jpg`,
   A15SMS: `${BASE}engine-a15sms.jpg`,
+  A15MF:  `${BASE}engine-a15mf.jpg`,
 };
 
 export default function EnginePhoto({ code, className }: Props) {
