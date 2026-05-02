@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { engines } from '../data/engines';
 import EnginePhoto from './EnginePhoto';
+import MaxIcon from './MaxIcon';
 
 const TELEGRAM_URL = 'https://t.me/+79382060824';
 const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtmUjt9s7_BVCaEo';
@@ -133,9 +134,9 @@ export default function Products() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="MAX"
-                      className="w-10 h-10 inline-flex items-center justify-center rounded-lg border border-border text-primary hover:border-primary transition text-xs font-extrabold"
+                      className="w-10 h-10 inline-flex items-center justify-center rounded-lg border border-border hover:border-primary transition"
                     >
-                      MAX
+                      <MaxIcon className="w-6 h-6 rounded" />
                     </a>
                   </div>
                 </div>
@@ -172,6 +173,7 @@ export default function Products() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 border-2 border-border text-text font-semibold px-6 py-3 rounded-xl hover:border-primary hover:text-primary transition"
             >
+              <MaxIcon className="w-5 h-5 rounded" />
               Написать в MAX
             </a>
           </div>

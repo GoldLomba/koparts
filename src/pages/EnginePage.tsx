@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import Delivery from '../components/Delivery';
 import Contact from '../components/Contact';
 import EnginePhoto from '../components/EnginePhoto';
+import MaxIcon from '../components/MaxIcon';
 import { findEngineBySlug, type Engine, type Variant } from '../data/engines';
 
 const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtmUjt9s7_BVCaEo';
@@ -119,6 +120,7 @@ function Hero({ engine }: { engine: Engine }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 border-2 border-border text-text font-semibold px-7 py-3.5 rounded-xl hover:border-primary hover:text-primary transition text-base"
               >
+                <MaxIcon className="w-5 h-5 rounded" />
                 MAX
               </a>
             </div>
@@ -233,9 +235,9 @@ function VariantCard({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="MAX"
-            className="w-10 h-10 inline-flex items-center justify-center rounded-lg border border-border text-primary hover:border-primary transition text-xs font-extrabold"
+            className="w-10 h-10 inline-flex items-center justify-center rounded-lg border border-border hover:border-primary transition"
           >
-            MAX
+            <MaxIcon className="w-6 h-6 rounded" />
           </a>
         </div>
       </div>
@@ -322,6 +324,7 @@ function FeaturesAndApps({ engine }: { engine: Engine }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border-2 border-border text-text font-semibold px-5 py-2.5 rounded-lg hover:border-primary hover:text-primary transition text-sm"
               >
+                <MaxIcon className="w-5 h-5 rounded" />
                 MAX
               </a>
             </div>
@@ -413,6 +416,7 @@ function Specs({ engine }: { engine: Engine }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 border-2 border-border text-text font-semibold px-5 py-3 rounded-lg hover:border-primary hover:text-primary transition text-sm"
                 >
+                  <MaxIcon className="w-5 h-5 rounded" />
                   Написать в MAX
                 </a>
               </div>

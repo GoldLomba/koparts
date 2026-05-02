@@ -1,13 +1,4 @@
-function MaxIcon({ className }: { className?: string }) {
-  return (
-    <span
-      className={`inline-flex items-center justify-center font-extrabold tracking-tight ${className ?? ''}`}
-      style={{ color: '#1d4ed8' }}
-    >
-      MAX
-    </span>
-  );
-}
+import MaxIcon from './MaxIcon';
 
 const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtmUjt9s7_BVCaEo';
 const TELEGRAM_URL = 'https://t.me/+79382060824';
@@ -54,8 +45,8 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="border border-border rounded-2xl p-6 text-center hover:shadow-md transition-shadow bg-white"
           >
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <MaxIcon className="text-sm" />
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+              <MaxIcon className="w-12 h-12 rounded-xl" />
             </div>
             <h3 className="text-base font-bold text-text">MAX мессенджер</h3>
             <p className="text-primary font-bold text-lg mt-2">Написать</p>
@@ -113,8 +104,8 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-3.5 rounded-xl hover:bg-white/10 transition"
             >
-              <span className="text-white font-extrabold">MAX</span>
-              мессенджер
+              <MaxIcon className="w-6 h-6 rounded" />
+              MAX мессенджер
             </a>
             <a
               href={TELEGRAM_URL}
