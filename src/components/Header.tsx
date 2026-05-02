@@ -1,28 +1,57 @@
 import { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+const navItems = [
+  { id: 'brands', label: 'Бренды' },
+  { id: 'products', label: 'Двигатели' },
+  { id: 'specs', label: 'Характеристики' },
+  { id: 'delivery', label: 'Доставка' },
+  { id: 'contact', label: 'Контакты' },
+];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  function goToSection(id: string, closeMenu = false) {
+    if (closeMenu) setMenuOpen(false);
+    if (location.pathname === '/') {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/');
+      // Wait for HomePage to mount, then scroll.
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 60);
+    }
+  }
 
   return (
     <header className="bg-white border-b border-border sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
             <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
           <span className="text-lg font-bold text-text">КорПартс</span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-text-secondary">
-          <a href="#brands" className="hover:text-primary transition">Бренды</a>
-          <a href="#products" className="hover:text-primary transition">Двигатели</a>
-          <a href="#specs" className="hover:text-primary transition">Характеристики</a>
-          <a href="#delivery" className="hover:text-primary transition">Доставка</a>
-          <a href="#contact" className="hover:text-primary transition">Контакты</a>
+          {navItems.map((n) => (
+            <button
+              key={n.id}
+              type="button"
+              onClick={() => goToSection(n.id)}
+              className="hover:text-primary transition cursor-pointer"
+            >
+              {n.label}
+            </button>
+          ))}
         </nav>
 
         {/* Phone */}
@@ -65,11 +94,16 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-border px-4 pb-4">
           <nav className="flex flex-col gap-3 pt-3 text-sm font-medium text-text-secondary">
-            <a href="#brands" onClick={() => setMenuOpen(false)} className="hover:text-primary py-1">Бренды</a>
-            <a href="#products" onClick={() => setMenuOpen(false)} className="hover:text-primary py-1">Двигатели</a>
-            <a href="#specs" onClick={() => setMenuOpen(false)} className="hover:text-primary py-1">Характеристики</a>
-            <a href="#delivery" onClick={() => setMenuOpen(false)} className="hover:text-primary py-1">Доставка</a>
-            <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-primary py-1">Контакты</a>
+            {navItems.map((n) => (
+              <button
+                key={n.id}
+                type="button"
+                onClick={() => goToSection(n.id, true)}
+                className="hover:text-primary py-1 text-left"
+              >
+                {n.label}
+              </button>
+            ))}
           </nav>
           <div className="mt-4 pt-3 border-t border-border">
             <a href="tel:+79382060824" className="text-base font-bold text-text">+7 (938) 206-08-24</a>

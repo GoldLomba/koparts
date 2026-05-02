@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 type Product = {
   brand: 'Daewoo' | 'Hyundai' | 'KIA';
   brandColor: string;
@@ -7,6 +9,7 @@ type Product = {
   price: string;
   features: string[];
   fits: string[];
+  pageUrl?: string;
 };
 
 const products: Product[] = [
@@ -23,6 +26,7 @@ const products: Product[] = [
       'Полный комплект навесного по запросу',
     ],
     fits: ['Daewoo Matiz', 'Chevrolet Spark'],
+    pageUrl: '/engines/f8cv',
   },
   {
     brand: 'Daewoo',
@@ -118,44 +122,72 @@ export default function Products() {
               className="border border-border rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
             >
               {/* Image / brand banner */}
-              <div
-                className="relative h-44 flex items-center justify-center text-white"
-                style={{
+              {(() => {
+                const banner = (
+                  <>
+                    <div className="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-md">
+                      {p.brand}
+                    </div>
+                    <div className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-md">
+                      Новый
+                    </div>
+                    <svg
+                      className="w-24 h-24 opacity-90"
+                      viewBox="0 0 64 64"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="10" y="20" width="44" height="28" rx="3" />
+                      <rect x="14" y="14" width="8" height="6" rx="1" />
+                      <rect x="26" y="14" width="8" height="6" rx="1" />
+                      <rect x="38" y="14" width="8" height="6" rx="1" />
+                      <line x1="10" y1="30" x2="54" y2="30" />
+                      <line x1="10" y1="40" x2="54" y2="40" />
+                      <circle cx="20" cy="48" r="2" />
+                      <circle cx="44" cy="48" r="2" />
+                    </svg>
+                    <div className="absolute bottom-3 left-3 text-white/90 text-xs font-semibold tracking-wider">
+                      {p.code}
+                    </div>
+                  </>
+                );
+                const style = {
                   background: `linear-gradient(135deg, ${p.brandColor} 0%, ${p.brandColor}cc 100%)`,
-                }}
-              >
-                <div className="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-md">
-                  {p.brand}
-                </div>
-                <div className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-md">
-                  Новый
-                </div>
-                <svg
-                  className="w-24 h-24 opacity-90"
-                  viewBox="0 0 64 64"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="10" y="20" width="44" height="28" rx="3" />
-                  <rect x="14" y="14" width="8" height="6" rx="1" />
-                  <rect x="26" y="14" width="8" height="6" rx="1" />
-                  <rect x="38" y="14" width="8" height="6" rx="1" />
-                  <line x1="10" y1="30" x2="54" y2="30" />
-                  <line x1="10" y1="40" x2="54" y2="40" />
-                  <circle cx="20" cy="48" r="2" />
-                  <circle cx="44" cy="48" r="2" />
-                </svg>
-                <div className="absolute bottom-3 left-3 text-white/90 text-xs font-semibold tracking-wider">
-                  {p.code}
-                </div>
-              </div>
+                };
+                return p.pageUrl ? (
+                  <Link
+                    to={p.pageUrl}
+                    aria-label={`Подробнее о ${p.title}`}
+                    className="relative h-44 flex items-center justify-center text-white block group"
+                    style={style}
+                  >
+                    {banner}
+                    <span className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                  </Link>
+                ) : (
+                  <div
+                    className="relative h-44 flex items-center justify-center text-white"
+                    style={style}
+                  >
+                    {banner}
+                  </div>
+                );
+              })()}
 
               {/* Body */}
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg font-extrabold text-text">{p.title}</h3>
+                <h3 className="text-lg font-extrabold text-text">
+                  {p.pageUrl ? (
+                    <Link to={p.pageUrl} className="hover:text-primary transition">
+                      {p.title}
+                    </Link>
+                  ) : (
+                    p.title
+                  )}
+                </h3>
                 <p className="text-sm text-text-secondary mt-1">{p.subtitle}</p>
 
                 <p className="text-2xl font-extrabold text-primary mt-4">{p.price}</p>
@@ -192,6 +224,24 @@ export default function Products() {
                     ))}
                   </div>
                 </div>
+
+                {p.pageUrl && (
+                  <Link
+                    to={p.pageUrl}
+                    className="inline-flex items-center gap-1 mt-5 text-sm font-semibold text-primary hover:text-primary-dark transition"
+                  >
+                    Подробнее о двигателе
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                )}
 
                 <div className="mt-6 flex gap-2">
                   <a
