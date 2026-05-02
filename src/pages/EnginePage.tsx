@@ -113,6 +113,14 @@ function Hero({ engine }: { engine: Engine }) {
                 <TelegramIcon className="w-5 h-5 text-[#0088cc]" />
                 Telegram
               </a>
+              <a
+                href={MAX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border-2 border-border text-text font-semibold px-7 py-3.5 rounded-xl hover:border-primary hover:text-primary transition text-base"
+              >
+                MAX
+              </a>
             </div>
 
             <div className="grid grid-cols-3 gap-4 mt-10 max-w-md mx-auto lg:mx-0">
@@ -308,6 +316,14 @@ function FeaturesAndApps({ engine }: { engine: Engine }) {
                 <TelegramIcon className="w-5 h-5 text-[#0088cc]" />
                 Telegram
               </a>
+              <a
+                href={MAX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-border text-text font-semibold px-5 py-2.5 rounded-lg hover:border-primary hover:text-primary transition text-sm"
+              >
+                MAX
+              </a>
             </div>
           </div>
 
@@ -390,6 +406,14 @@ function Specs({ engine }: { engine: Engine }) {
                 >
                   <TelegramIcon className="w-5 h-5 text-[#0088cc]" />
                   Написать в Telegram
+                </a>
+                <a
+                  href={MAX_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-border text-text font-semibold px-5 py-3 rounded-lg hover:border-primary hover:text-primary transition text-sm"
+                >
+                  Написать в MAX
                 </a>
               </div>
             </div>
