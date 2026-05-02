@@ -10,6 +10,7 @@ type EngineSpec = {
 const engines: EngineSpec[] = [
   { brand: 'Daewoo', code: 'F8CV', volume: '0.8 л / 796 см³', power: '51 л.с.', type: 'Бензин, SOHC', fits: 'Matiz, Spark' },
   { brand: 'Daewoo', code: 'A15SMS', volume: '1.5 л', power: '80 л.с.', type: 'Бензин, SOHC', fits: 'Nexia, Lanos' },
+  { brand: 'Hyundai', code: 'G4EE', volume: '1.4 л', power: '97 л.с.', type: 'Бензин, DOHC 16V', fits: 'Getz, Accent' },
   { brand: 'Hyundai', code: 'G4FA', volume: '1.4 л', power: '107 л.с.', type: 'Бензин, DOHC 16V', fits: 'Solaris, Accent' },
   { brand: 'Hyundai', code: 'G4FC', volume: '1.6 л', power: '123 л.с.', type: 'Бензин, DOHC 16V', fits: 'Solaris, i30' },
   { brand: 'Hyundai', code: 'D4EA', volume: '2.0 л', power: '112 л.с.', type: 'Дизель, CRDi', fits: 'Tucson, Sportage' },

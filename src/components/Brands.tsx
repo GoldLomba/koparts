@@ -10,14 +10,14 @@ const brands = [
     name: 'Hyundai',
     color: '#002c5f',
     models: ['Solaris', 'Accent', 'Getz', 'Elantra', 'Sonata', 'Tucson'],
-    engines: 'G4FA, G4FC, G4FG, G4KD, D4EA',
+    engines: 'G4EE, G4FA, G4FC, G4FG, G4KD, D4EA',
     count: '30+ моторов',
   },
   {
     name: 'KIA',
     color: '#bb162b',
     models: ['Rio', 'Cerato', 'Spectra', 'Sportage', 'Optima', 'Sorento'],
-    engines: 'G4FA, G4FC, G4FG, G4KD, G4KE, D4HB',
+    engines: 'G4EE, G4FA, G4FC, G4FG, G4KD, D4HB',
     count: '30+ моторов',
   },
 ];

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import F8CVPage from './pages/F8CVPage';
+import EnginePage from './pages/EnginePage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -21,7 +21,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/engines/f8cv" element={<F8CVPage />} />
+          <Route path="/engines/:slug" element={<EnginePage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </main>
