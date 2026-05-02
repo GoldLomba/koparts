@@ -5,12 +5,18 @@ type Props = {
   className?: string;
 };
 
-const ENGINE_IMG = `${import.meta.env.BASE_URL}engine.jpg`;
+const BASE = import.meta.env.BASE_URL;
+const DEFAULT_IMG = `${BASE}engine.jpg`;
+
+const IMAGE_BY_CODE: Record<string, string> = {
+  F8CV: `${BASE}engine-f8cv.jpg`,
+};
 
 export default function EnginePhoto({ code, className }: Props) {
+  const src = IMAGE_BY_CODE[code] ?? DEFAULT_IMG;
   return (
     <img
-      src={ENGINE_IMG}
+      src={src}
       alt={`Двигатель ${code}`}
       loading="lazy"
       className={className}
