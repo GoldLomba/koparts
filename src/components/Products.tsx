@@ -3,6 +3,7 @@ import { engines } from '../data/engines';
 import EnginePhoto from './EnginePhoto';
 
 const TELEGRAM_URL = 'https://t.me/+79382060824';
+const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtmUjt9s7_BVCaEo';
 
 export default function Products() {
   return (
@@ -127,6 +128,15 @@ export default function Products() {
                         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.6.295l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.658-.643.136-.953l11.566-4.458c.538-.196 1.006.128.832.939z" />
                       </svg>
                     </a>
+                    <a
+                      href={MAX_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="MAX"
+                      className="w-10 h-10 inline-flex items-center justify-center rounded-lg border border-border text-primary hover:border-primary transition text-xs font-extrabold"
+                    >
+                      MAX
+                    </a>
                   </div>
                 </div>
               </article>
@@ -155,6 +165,14 @@ export default function Products() {
               className="inline-flex items-center justify-center gap-2 border-2 border-border text-text font-semibold px-6 py-3 rounded-xl hover:border-primary hover:text-primary transition"
             >
               Написать в Telegram
+            </a>
+            <a
+              href={MAX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border-2 border-border text-text font-semibold px-6 py-3 rounded-xl hover:border-primary hover:text-primary transition"
+            >
+              Написать в MAX
             </a>
           </div>
         </div>
