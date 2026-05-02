@@ -1,53 +1,29 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Delivery from '../components/Delivery';
 import Contact from '../components/Contact';
+import EnginePhoto from '../components/EnginePhoto';
 import { findEngineBySlug, type Engine, type Variant } from '../data/engines';
 
 const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtmUjt9s7_BVCaEo';
 const TELEGRAM_URL = 'https://t.me/+79382060824';
 
-function EngineImage({
+function EngineCanvas({
+  engine,
   className = '',
-  brandColor,
 }: {
+  engine: Engine;
   className?: string;
-  brandColor: string;
 }) {
-  const style = {
-    background: `linear-gradient(135deg, ${brandColor} 0%, ${brandColor}cc 50%, #3b82f6 100%)`,
-  };
   return (
     <div
-      className={`flex items-center justify-center relative overflow-hidden ${className}`}
-      style={style}
+      className={`relative flex items-center justify-center bg-bg-light rounded-2xl border border-border overflow-hidden ${className}`}
     >
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 20% 20%, white 0%, transparent 40%), radial-gradient(circle at 80% 70%, white 0%, transparent 40%)',
-        }}
+      <EnginePhoto
+        code={engine.code}
+        cylinders={engine.cylinders}
+        accentColor={engine.brandColor}
+        className="w-full h-full max-h-full object-contain p-6 md:p-8"
       />
-      <svg
-        className="w-2/3 h-2/3 text-white relative drop-shadow-lg"
-        viewBox="0 0 64 64"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="10" y="20" width="44" height="28" rx="3" />
-        <rect x="14" y="14" width="8" height="6" rx="1" />
-        <rect x="26" y="14" width="8" height="6" rx="1" />
-        <rect x="38" y="14" width="8" height="6" rx="1" />
-        <line x1="10" y1="30" x2="54" y2="30" />
-        <line x1="10" y1="40" x2="54" y2="40" />
-        <circle cx="20" cy="48" r="2" />
-        <circle cx="44" cy="48" r="2" />
-        <path d="M54 26 L60 26 L60 36 L54 36" />
-        <path d="M10 32 L4 32" />
-      </svg>
     </div>
   );
 }
@@ -155,10 +131,7 @@ function Hero({ engine }: { engine: Engine }) {
           </div>
 
           <div className="flex-1 flex justify-center w-full">
-            <EngineImage
-              brandColor={engine.brandColor}
-              className="image-decor w-full max-w-md aspect-[4/3]"
-            />
+            <EngineCanvas engine={engine} className="w-full max-w-md aspect-[4/3]" />
           </div>
         </div>
       </div>
@@ -166,19 +139,30 @@ function Hero({ engine }: { engine: Engine }) {
   );
 }
 
-function VariantCard({ v, brandColor }: { v: Variant; brandColor: string }) {
+function VariantCard({
+  v,
+  engine,
+}: {
+  v: Variant;
+  engine: Engine;
+}) {
   return (
     <article className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
-      <div className="relative h-52">
-        <EngineImage brandColor={brandColor} className="w-full h-full" />
-        <div
+      <div className="relative h-56 bg-bg-light flex items-center justify-center">
+        <EnginePhoto
+          code={engine.code}
+          cylinders={engine.cylinders}
+          accentColor={engine.brandColor}
+          className="w-full h-full max-h-52 object-contain px-4 py-3"
+        />
+        <span
           className={`absolute top-3 left-3 ${v.badgeBg} text-white text-xs font-bold px-2.5 py-1 rounded-md`}
         >
           {v.badge}
-        </div>
-        <div className="absolute top-3 right-3 bg-white/15 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-md">
+        </span>
+        <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-md">
           Новый
-        </div>
+        </span>
       </div>
 
       <div className="p-6 flex flex-col flex-1">
@@ -267,7 +251,7 @@ function Variants({ engine }: { engine: Engine }) {
 
         <div className="grid md:grid-cols-2 gap-6">
           {engine.variants.map((v) => (
-            <VariantCard key={v.badge} v={v} brandColor={engine.brandColor} />
+            <VariantCard key={v.badge} v={v} engine={engine} />
           ))}
         </div>
       </div>

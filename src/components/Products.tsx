@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { engines } from '../data/engines';
+import EnginePhoto from './EnginePhoto';
 
 const TELEGRAM_URL = 'https://t.me/+79382060824';
 
@@ -26,39 +27,24 @@ export default function Products() {
                 <Link
                   to={pageUrl}
                   aria-label={`Подробнее о ${p.title}`}
-                  className="relative h-44 flex items-center justify-center text-white block group"
-                  style={{
-                    background: `linear-gradient(135deg, ${p.brandColor} 0%, ${p.brandColor}cc 100%)`,
-                  }}
+                  className="relative h-48 flex items-center justify-center bg-bg-light block group overflow-hidden"
                 >
-                  <div className="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-md">
-                    {p.brand}
-                  </div>
-                  <div className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-md">
-                    Новый
-                  </div>
-                  <svg
-                    className="w-24 h-24 opacity-90"
-                    viewBox="0 0 64 64"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  <span
+                    className="absolute top-3 left-3 bg-white text-xs font-bold px-2.5 py-1 rounded-md border border-border shadow-sm"
+                    style={{ color: p.brandColor }}
                   >
-                    <rect x="10" y="20" width="44" height="28" rx="3" />
-                    <rect x="14" y="14" width="8" height="6" rx="1" />
-                    <rect x="26" y="14" width="8" height="6" rx="1" />
-                    <rect x="38" y="14" width="8" height="6" rx="1" />
-                    <line x1="10" y1="30" x2="54" y2="30" />
-                    <line x1="10" y1="40" x2="54" y2="40" />
-                    <circle cx="20" cy="48" r="2" />
-                    <circle cx="44" cy="48" r="2" />
-                  </svg>
-                  <div className="absolute bottom-3 left-3 text-white/90 text-xs font-semibold tracking-wider">
-                    {p.code}
-                  </div>
-                  <span className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                    {p.brand}
+                  </span>
+                  <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-md">
+                    Новый
+                  </span>
+                  <EnginePhoto
+                    code={p.code}
+                    cylinders={p.cylinders}
+                    accentColor={p.brandColor}
+                    className="w-full h-full max-h-44 object-contain px-4 py-3 transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <span className="absolute inset-0 bg-black/0 group-hover:bg-black/[0.03] transition-colors" />
                 </Link>
 
                 <div className="p-6 flex flex-col flex-1">

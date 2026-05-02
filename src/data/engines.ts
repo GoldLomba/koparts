@@ -16,6 +16,8 @@ export type Engine = {
   code: string;
   brand: 'Daewoo' | 'Hyundai' | 'KIA';
   brandColor: string;
+  /** Number of cylinders — used by the engine illustration. */
+  cylinders: 3 | 4;
   /** Catalog card title, e.g. "Daewoo F8CV 0.8L" */
   title: string;
   /** Catalog card subtitle */
@@ -39,6 +41,7 @@ export const engines: Engine[] = [
     code: 'F8CV',
     brand: 'Daewoo',
     brandColor: '#0f2c63',
+    cylinders: 3,
     title: 'Daewoo F8CV 0.8L',
     subtitle: 'Бензиновый, 3 цилиндра, 51 л.с.',
     price: 'от 145 000 ₽',
@@ -107,6 +110,7 @@ export const engines: Engine[] = [
     code: 'A15SMS',
     brand: 'Daewoo',
     brandColor: '#0f2c63',
+    cylinders: 4,
     title: 'Daewoo A15SMS 1.5L',
     subtitle: 'Бензиновый, 8-клапанный, 80 л.с.',
     price: 'от 135 000 ₽',
@@ -145,6 +149,7 @@ export const engines: Engine[] = [
     code: 'G4EE',
     brand: 'Hyundai',
     brandColor: '#002c5f',
+    cylinders: 4,
     title: 'Hyundai G4EE 1.4L',
     subtitle: 'Бензиновый, 16V, DOHC, 97 л.с.',
     price: 'от 175 000 ₽',
@@ -183,6 +188,7 @@ export const engines: Engine[] = [
     code: 'G4FA',
     brand: 'Hyundai',
     brandColor: '#002c5f',
+    cylinders: 4,
     title: 'Hyundai G4FA 1.4L',
     subtitle: 'Бензиновый, 16V, DOHC, 107 л.с.',
     price: 'от 195 000 ₽',
@@ -221,6 +227,7 @@ export const engines: Engine[] = [
     code: 'G4FC',
     brand: 'Hyundai',
     brandColor: '#002c5f',
+    cylinders: 4,
     title: 'Hyundai G4FC 1.6L',
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
     price: 'от 220 000 ₽',
@@ -260,6 +267,7 @@ export const engines: Engine[] = [
     code: 'G4FG',
     brand: 'KIA',
     brandColor: '#bb162b',
+    cylinders: 4,
     title: 'KIA G4FG 1.6L MPI',
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
     price: 'от 235 000 ₽',
@@ -298,6 +306,7 @@ export const engines: Engine[] = [
     code: 'G4KD',
     brand: 'KIA',
     brandColor: '#bb162b',
+    cylinders: 4,
     title: 'KIA G4KD 2.0L',
     subtitle: 'Бензиновый, 16V, DOHC, 150 л.с.',
     price: 'от 295 000 ₽',
