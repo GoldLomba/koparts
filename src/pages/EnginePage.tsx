@@ -128,7 +128,7 @@ function Hero({ engine }: { engine: Engine }) {
             <div className="grid grid-cols-3 gap-4 mt-10 max-w-md mx-auto lg:mx-0">
               {[
                 { icon: '🛡️', title: 'Гарантия', sub: '12 месяцев' },
-                { icon: '📦', title: 'Заводская', sub: 'упаковка' },
+                { icon: '📋', title: 'Декларация', sub: 'для ГИБДД' },
                 { icon: '🚚', title: 'Доставка', sub: 'По всей РФ' },
               ].map((b) => (
                 <div key={b.title} className="text-center">
