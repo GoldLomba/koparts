@@ -35,6 +35,14 @@ export type Engine = {
   applications: Application[];
   /** Customer review photo paths (relative to public/) */
   reviewPhotos?: { src: string; caption: string }[];
+  /** Customer review text + rating */
+  review?: {
+    author: string;
+    location?: string;
+    rating: 1 | 2 | 3 | 4 | 5;
+    text: string;
+    date?: string;
+  };
 };
 
 export const engines: Engine[] = [
@@ -112,6 +120,14 @@ export const engines: Engine[] = [
       { src: 'reviews/f8cv-3.jpg', caption: 'Двигатель в заводской деревянной упаковке' },
       { src: 'reviews/f8cv-4.jpg', caption: 'Новый F8CV M-TEC — готов к установке' },
     ],
+    review: {
+      author: 'Алексей',
+      location: 'Москва',
+      rating: 5,
+      date: 'апрель 2026',
+      text:
+        'Старый мотор на Матизе уже дымил и троил, искал замену — попал на сайт koparts. Менеджер сразу ответил в Telegram, подобрал нужное исполнение под катушку зажигания, прислал фото и видео двигателя со склада. Заказал, оплатил по СБП — на следующий день уже отгрузили транспортной. Мотор пришёл в металлическом ящике на паллете, внутри — заводская деревянная упаковка и плёнка. Двигатель новый, без следов работы, маркировка совпадает. Установили — завёлся с первого раза, работает ровно. Рекомендую!',
+    },
   },
   {
     slug: 'a15sms',

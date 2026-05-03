@@ -430,32 +430,81 @@ function Specs({ engine }: { engine: Engine }) {
 
 const BASE = import.meta.env.BASE_URL;
 
+function Stars({ rating }: { rating: number }) {
+  return (
+    <div className="inline-flex items-center gap-0.5" aria-label={`Рейтинг ${rating} из 5`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg
+          key={i}
+          className={`w-5 h-5 ${i < rating ? 'text-yellow-400' : 'text-border'}`}
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden
+        >
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 function ReviewPhotos({ engine }: { engine: Engine }) {
-  if (!engine.reviewPhotos?.length) return null;
+  if (!engine.reviewPhotos?.length && !engine.review) return null;
   return (
     <section className="bg-white py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-text">Фотоотчёт от покупателя</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-text">Отзыв покупателя</h2>
           <p className="text-text-secondary mt-3">
-            Реальные фото заказа — от старого мотора до нового в заводской упаковке
+            Реальный заказ — от старого мотора до нового в заводской упаковке
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {engine.reviewPhotos.map((p, i) => (
-            <figure key={i} className="group relative overflow-hidden rounded-2xl border border-border bg-bg-light">
-              <img
-                src={`${BASE}${p.src}`}
-                alt={p.caption}
-                loading="lazy"
-                className="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <figcaption className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                {p.caption}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+
+        {engine.review && (
+          <div className="max-w-3xl mx-auto bg-bg-light border border-border rounded-2xl p-6 md:p-8 mb-8">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-primary text-white font-extrabold text-lg flex items-center justify-center flex-shrink-0">
+                {engine.review.author[0]}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="font-extrabold text-text">{engine.review.author}</span>
+                  {engine.review.location && (
+                    <span className="text-sm text-text-secondary">{engine.review.location}</span>
+                  )}
+                  {engine.review.date && (
+                    <span className="text-sm text-text-secondary">· {engine.review.date}</span>
+                  )}
+                </div>
+                <div className="mt-1.5 flex items-center gap-2">
+                  <Stars rating={engine.review.rating} />
+                  <span className="text-sm font-semibold text-text">{engine.review.rating}.0 / 5</span>
+                </div>
+                <p className="mt-4 text-text-secondary text-sm md:text-base leading-relaxed">
+                  {engine.review.text}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {engine.reviewPhotos?.length ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {engine.reviewPhotos.map((p, i) => (
+              <figure key={i} className="group relative overflow-hidden rounded-2xl border border-border bg-bg-light">
+                <img
+                  src={`${BASE}${p.src}`}
+                  alt={p.caption}
+                  loading="lazy"
+                  className="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <figcaption className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  {p.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        ) : null}
       </div>
     </section>
   );
