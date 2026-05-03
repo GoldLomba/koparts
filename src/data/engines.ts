@@ -53,7 +53,7 @@ export const engines: Engine[] = [
     cylinders: 3,
     title: 'Daewoo F8CV 0.8L',
     subtitle: 'Бензиновый, 3 цилиндра, 51 л.с.',
-    price: 'от 145 000 ₽',
+    price: '85 000 ₽',
     features: [
       'Новый, в заводской упаковке',
       'Под катушку зажигания и под трамблёр',
@@ -68,7 +68,7 @@ export const engines: Engine[] = [
         badgeBg: 'bg-primary',
         title: 'F8CV под катушку зажигания',
         subtitle: 'Современная электронная система зажигания',
-        price: 'от 145 000 ₽',
+        price: '85 000 ₽',
         features: [
           'Новый, в заводской упаковке',
           'Электронный модуль зажигания',
@@ -82,7 +82,7 @@ export const engines: Engine[] = [
         badgeBg: 'bg-accent',
         title: 'F8CV под трамблёр',
         subtitle: 'Классическая, проверенная конструкция',
-        price: 'от 145 000 ₽',
+        price: '85 000 ₽',
         features: [
           'Новый, в заводской упаковке',
           'Механический распределитель зажигания',
@@ -160,7 +160,7 @@ export const engines: Engine[] = [
     cylinders: 4,
     title: 'Daewoo A15SMS 1.5L',
     subtitle: 'Бензиновый, 8-клапанный, 80 л.с.',
-    price: 'от 135 000 ₽',
+    price: '135 000 ₽',
     features: [
       'Новый, поставка GM Korea',
       'Чугунный блок, надёжный SOHC',
@@ -199,7 +199,7 @@ export const engines: Engine[] = [
     cylinders: 4,
     title: 'Hyundai G4EE 1.4L',
     subtitle: 'Бензиновый, 16V, DOHC, 97 л.с.',
-    price: 'от 175 000 ₽',
+    price: '145 000 ₽',
     features: [
       'Новый, поставка Hyundai-Kia',
       'Серия Alpha II, 16V DOHC',
@@ -238,7 +238,7 @@ export const engines: Engine[] = [
     cylinders: 4,
     title: 'Hyundai G4FA 1.4L',
     subtitle: 'Бензиновый, 16V, DOHC, 107 л.с.',
-    price: 'от 195 000 ₽',
+    price: '195 000 ₽',
     features: [
       'Новый, поставка Hyundai-Kia',
       'Серия Gamma, цепной привод ГРМ',
@@ -277,7 +277,7 @@ export const engines: Engine[] = [
     cylinders: 4,
     title: 'Hyundai G4FC 1.6L',
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
-    price: 'от 220 000 ₽',
+    price: '220 000 ₽',
     features: [
       'Новый, поставка Hyundai-Kia',
       'Серия Gamma, цепной привод ГРМ',
@@ -317,7 +317,7 @@ export const engines: Engine[] = [
     cylinders: 4,
     title: 'KIA G4FG 1.6L MPI',
     subtitle: 'Бензиновый, 16V, DOHC, 123 л.с.',
-    price: 'от 235 000 ₽',
+    price: '235 000 ₽',
     features: [
       'Новый, серия Gamma II',
       'Цепной привод ГРМ — без замены ремня',
@@ -356,7 +356,7 @@ export const engines: Engine[] = [
     cylinders: 4,
     title: 'KIA G4KD 2.0L',
     subtitle: 'Бензиновый, 16V, DOHC, 150 л.с.',
-    price: 'от 295 000 ₽',
+    price: '295 000 ₽',
     features: [
       'Новый, серия Theta II MPI',
       'Заводская упаковка и консервация',
