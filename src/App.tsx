@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import StickyCTA from './components/StickyCTA';
 import HomePage from './pages/HomePage';
 import EnginePage from './pages/EnginePage';
 
@@ -26,6 +27,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <StickyCTA />
     </HashRouter>
   );
 }

@@ -83,12 +83,19 @@ function Hero({ engine }: { engine: Engine }) {
               {engine.description}
             </p>
 
-            <p className="text-3xl font-extrabold text-primary mt-6">{engine.price}</p>
+            <div className="mt-6 flex items-baseline gap-3 justify-center lg:justify-start">
+              <p className="text-3xl font-extrabold text-primary">{engine.price}</p>
+              <span className="text-xs text-text-secondary">с НДС, без доставки</span>
+            </div>
+            <p className="mt-2 text-sm text-accent font-semibold flex items-center gap-1.5 justify-center lg:justify-start">
+              <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
+              Сейчас в наличии — успейте заказать
+            </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-8 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
               <a
                 href="tel:+79382060824"
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-primary-dark transition text-base"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-primary-dark transition text-base shadow-lg shadow-primary/30"
               >
                 <svg
                   className="w-5 h-5"
