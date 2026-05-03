@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Delivery from '../components/Delivery';
 import Contact from '../components/Contact';
@@ -90,6 +91,18 @@ function Hero({ engine }: { engine: Engine }) {
             <p className="mt-2 text-sm text-accent font-semibold flex items-center gap-1.5 justify-center lg:justify-start">
               <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
               Сейчас в наличии — успейте заказать
+            </p>
+            {engine.stockCount && (
+              <div className="mt-3 inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-sm font-semibold px-3 py-1.5 rounded-lg">
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Осталось {engine.stockCount} шт. — торопитесь
+              </div>
+            )}
+            <p className="mt-2 text-sm text-text-secondary flex items-center gap-1.5 justify-center lg:justify-start">
+              <span className="text-base">⚡</span>
+              Отгружаем в день оплаты при заказе до 16:00
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
@@ -467,7 +480,8 @@ function ReviewPhotos({ engine }: { engine: Engine }) {
           <div className="mt-3 inline-flex items-center gap-2">
             <Stars rating={Math.round(avgRating)} />
             <span className="text-sm font-semibold text-text">
-              {avgRating.toFixed(1)} / 5 · {engine.reviews.length} {engine.reviews.length === 1 ? 'отзыв' : 'отзыва'}
+              {avgRating.toFixed(1)} / 5 · {engine.reviews.length}{' '}
+              {engine.reviews.length === 1 ? 'отзыв' : engine.reviews.length < 5 ? 'отзыва' : 'отзывов'}
             </span>
           </div>
         </div>
@@ -478,12 +492,14 @@ function ReviewPhotos({ engine }: { engine: Engine }) {
               key={i}
               className="border border-border rounded-2xl overflow-hidden bg-white hover:shadow-md transition-shadow flex flex-col"
             >
-              <img
-                src={`${BASE}${r.src}`}
-                alt={`Отзыв ${r.author}`}
-                loading="lazy"
-                className="w-full aspect-[4/3] object-cover bg-bg-light"
-              />
+              {r.src && (
+                <img
+                  src={`${BASE}${r.src}`}
+                  alt={`Отзыв ${r.author}`}
+                  loading="lazy"
+                  className="w-full aspect-[4/3] object-cover bg-bg-light"
+                />
+              )}
               <div className="p-5 md:p-6 flex flex-col flex-1">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary text-white font-extrabold flex items-center justify-center flex-shrink-0">
@@ -514,6 +530,124 @@ function ReviewPhotos({ engine }: { engine: Engine }) {
   );
 }
 
+function EngineDesktopStickyBar({ engine }: { engine: Engine }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <div
+      className={`hidden md:flex fixed inset-x-0 bottom-0 z-40 bg-white border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-transform duration-300 ${
+        visible ? 'translate-y-0' : 'translate-y-full'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-4 py-3 w-full flex items-center justify-between gap-4">
+        <div>
+          <p className="text-base font-extrabold text-text">
+            Двигатель {engine.code} — {engine.price}
+          </p>
+          <p className="text-xs text-text-secondary">Новый · Гарантия 12 мес. · Отгрузка в день оплаты</p>
+        </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          {engine.stockCount && (
+            <span className="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold text-accent bg-accent/10 border border-accent/20 px-3 py-1.5 rounded-full">
+              ⚠ Осталось {engine.stockCount} шт.
+            </span>
+          )}
+          <a
+            href="tel:+79382060824"
+            className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-5 py-2.5 rounded-lg hover:bg-primary-dark transition text-sm shadow-lg shadow-primary/20"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Купить сейчас
+          </a>
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 border border-border text-text font-semibold px-4 py-2.5 rounded-lg hover:border-[#0088cc] hover:text-[#0088cc] transition text-sm"
+          >
+            <TelegramIcon className="w-4 h-4 text-[#0088cc]" />
+            Telegram
+          </a>
+          <a
+            href={MAX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 border border-border text-text font-semibold px-4 py-2.5 rounded-lg hover:border-primary hover:text-primary transition text-sm"
+          >
+            <MaxIcon className="w-5 h-5 rounded" />
+            MAX
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MidPageCTA({ engine }: { engine: Engine }) {
+  return (
+    <section className="bg-gradient-to-r from-primary-dark to-primary py-10">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-white/70 text-xs font-semibold uppercase tracking-wider mb-1">
+              Не откладывайте
+            </p>
+            <h3 className="text-xl md:text-2xl font-extrabold text-white">
+              Двигатель {engine.code} — {engine.price}
+            </h3>
+            <p className="text-white/80 text-sm mt-1.5">
+              Отгружаем в день оплаты · Гарантия 12 мес. · Документы для ГИБДД
+            </p>
+            {engine.stockCount && (
+              <p className="text-sm font-bold text-yellow-300 mt-2 flex items-center gap-1.5 justify-center md:justify-start">
+                <span>⚠</span> Осталось {engine.stockCount} шт. на складе
+              </p>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-2 justify-center">
+            <a
+              href="tel:+79382060824"
+              className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-6 py-3 rounded-xl hover:bg-bg-light transition text-sm"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Купить сейчас
+            </a>
+            <a
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition text-sm"
+            >
+              <TelegramIcon className="w-4 h-4" />
+              Telegram
+            </a>
+            <a
+              href={MAX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition text-sm"
+            >
+              <MaxIcon className="w-5 h-5 rounded" />
+              MAX
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function EnginePage() {
   const { slug } = useParams();
   const engine = slug ? findEngineBySlug(slug) : undefined;
@@ -526,9 +660,11 @@ export default function EnginePage() {
       <Variants engine={engine} />
       <FeaturesAndApps engine={engine} />
       <Specs engine={engine} />
+      <MidPageCTA engine={engine} />
       <ReviewPhotos engine={engine} />
       <Delivery />
       <Contact />
+      <EngineDesktopStickyBar engine={engine} />
     </>
   );
 }
