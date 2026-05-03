@@ -449,62 +449,59 @@ function Stars({ rating }: { rating: number }) {
 }
 
 function ReviewPhotos({ engine }: { engine: Engine }) {
-  if (!engine.reviewPhotos?.length && !engine.review) return null;
+  if (!engine.reviews?.length) return null;
+  const avgRating =
+    engine.reviews.reduce((s, r) => s + r.rating, 0) / engine.reviews.length;
   return (
     <section className="bg-white py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-text">Отзыв покупателя</h2>
-          <p className="text-text-secondary mt-3">
-            Реальный заказ — от старого мотора до нового в заводской упаковке
-          </p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-text">Отзывы покупателей</h2>
+          <div className="mt-3 inline-flex items-center gap-2">
+            <Stars rating={Math.round(avgRating)} />
+            <span className="text-sm font-semibold text-text">
+              {avgRating.toFixed(1)} / 5 · {engine.reviews.length} {engine.reviews.length === 1 ? 'отзыв' : 'отзыва'}
+            </span>
+          </div>
         </div>
 
-        {engine.review && (
-          <div className="max-w-3xl mx-auto bg-bg-light border border-border rounded-2xl p-6 md:p-8 mb-8">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary text-white font-extrabold text-lg flex items-center justify-center flex-shrink-0">
-                {engine.review.author[0]}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <span className="font-extrabold text-text">{engine.review.author}</span>
-                  {engine.review.location && (
-                    <span className="text-sm text-text-secondary">{engine.review.location}</span>
-                  )}
-                  {engine.review.date && (
-                    <span className="text-sm text-text-secondary">· {engine.review.date}</span>
-                  )}
+        <div className="grid sm:grid-cols-2 gap-6">
+          {engine.reviews.map((r, i) => (
+            <article
+              key={i}
+              className="border border-border rounded-2xl overflow-hidden bg-white hover:shadow-md transition-shadow flex flex-col"
+            >
+              <img
+                src={`${BASE}${r.src}`}
+                alt={`Отзыв ${r.author}`}
+                loading="lazy"
+                className="w-full aspect-[4/3] object-cover bg-bg-light"
+              />
+              <div className="p-5 md:p-6 flex flex-col flex-1">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary text-white font-extrabold flex items-center justify-center flex-shrink-0">
+                    {r.author[0]}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                      <span className="font-extrabold text-text">{r.author}</span>
+                      {r.location && (
+                        <span className="text-xs text-text-secondary">{r.location}</span>
+                      )}
+                      {r.date && (
+                        <span className="text-xs text-text-secondary">· {r.date}</span>
+                      )}
+                    </div>
+                    <div className="mt-1">
+                      <Stars rating={r.rating} />
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-1.5 flex items-center gap-2">
-                  <Stars rating={engine.review.rating} />
-                  <span className="text-sm font-semibold text-text">{engine.review.rating}.0 / 5</span>
-                </div>
-                <p className="mt-4 text-text-secondary text-sm md:text-base leading-relaxed">
-                  {engine.review.text}
-                </p>
+                <p className="mt-4 text-text-secondary text-sm leading-relaxed">{r.text}</p>
               </div>
-            </div>
-          </div>
-        )}
-
-        {engine.reviewPhotos?.length ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {engine.reviewPhotos.map((p, i) => (
-              <figure key={i} className="group relative overflow-hidden rounded-2xl border border-border bg-bg-light">
-                <img
-                  src={`${BASE}${p.src}`}
-                  alt={p.caption}
-                  loading="lazy"
-                  className="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <figcaption className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  {p.caption}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        ) : null}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
