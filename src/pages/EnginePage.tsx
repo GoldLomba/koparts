@@ -428,6 +428,39 @@ function Specs({ engine }: { engine: Engine }) {
   );
 }
 
+const BASE = import.meta.env.BASE_URL;
+
+function ReviewPhotos({ engine }: { engine: Engine }) {
+  if (!engine.reviewPhotos?.length) return null;
+  return (
+    <section className="bg-white py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-text">Фотоотчёт от покупателя</h2>
+          <p className="text-text-secondary mt-3">
+            Реальные фото заказа — от старого мотора до нового в заводской упаковке
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {engine.reviewPhotos.map((p, i) => (
+            <figure key={i} className="group relative overflow-hidden rounded-2xl border border-border bg-bg-light">
+              <img
+                src={`${BASE}${p.src}`}
+                alt={p.caption}
+                loading="lazy"
+                className="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <figcaption className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                {p.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function EnginePage() {
   const { slug } = useParams();
   const engine = slug ? findEngineBySlug(slug) : undefined;
@@ -440,6 +473,7 @@ export default function EnginePage() {
       <Variants engine={engine} />
       <FeaturesAndApps engine={engine} />
       <Specs engine={engine} />
+      <ReviewPhotos engine={engine} />
       <Delivery />
       <Contact />
     </>

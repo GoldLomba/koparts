@@ -33,6 +33,8 @@ export type Engine = {
   variants?: Variant[];
   specs: SpecRow[];
   applications: Application[];
+  /** Customer review photo paths (relative to public/) */
+  reviewPhotos?: { src: string; caption: string }[];
 };
 
 export const engines: Engine[] = [
@@ -103,6 +105,12 @@ export const engines: Engine[] = [
       { model: 'Daewoo Matiz', years: '1998–2015' },
       { model: 'Daewoo Tico', years: '1991–2001' },
       { model: 'Chevrolet Spark', years: '2005–2010' },
+    ],
+    reviewPhotos: [
+      { src: 'reviews/f8cv-1.jpg', caption: 'Старый мотор до замены — Daewoo Matiz' },
+      { src: 'reviews/f8cv-2.jpg', caption: 'Доставка в металлическом ящике на паллете' },
+      { src: 'reviews/f8cv-3.jpg', caption: 'Двигатель в заводской деревянной упаковке' },
+      { src: 'reviews/f8cv-4.jpg', caption: 'Новый F8CV M-TEC — готов к установке' },
     ],
   },
   {
