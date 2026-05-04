@@ -103,10 +103,10 @@ function Hero({ engine }: { engine: Engine }) {
                 Осталось {engine.stockCount} шт. — торопитесь
               </div>
             )}
-            <p className="mt-2 text-sm text-text-secondary flex items-center gap-1.5 justify-center lg:justify-start">
-              <span className="text-base">⚡</span>
+            <div className="mt-3 inline-flex items-center gap-2 bg-yellow-400 text-text font-extrabold px-3.5 py-2 rounded-lg text-sm shadow-md shadow-yellow-400/40 ring-1 ring-yellow-500/30">
+              <span className="text-base animate-pulse">⚡</span>
               Отгружаем в день оплаты при заказе до 16:00
-            </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
               <a
