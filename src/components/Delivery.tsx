@@ -12,8 +12,15 @@ const options = [
       </svg>
     ),
     color: 'primary',
-    title: 'По Москве',
-    sub: 'Курьер 1–2 дня',
+    title: 'По Москве и МО до 30 км',
+    sub: (
+      <>
+        Доставка в день заказа{' '}
+        <span className="bg-green text-white font-extrabold px-1.5 py-0.5 rounded">
+          бесплатно!
+        </span>
+      </>
+    ),
     items: ['Курьерская доставка до подъезда', 'Самовывоз со склада в Москве', 'Оплата при получении возможна'],
   },
   {
