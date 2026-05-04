@@ -95,6 +95,7 @@ export const engines: Engine[] = [
           'Совместимость с ранними кузовами',
         ],
         fits: ['Daewoo Matiz (1998–2005)', 'Daewoo Tico'],
+        image: 'f8cv-distributor.jpg',
       },
     ],
     specs: [
