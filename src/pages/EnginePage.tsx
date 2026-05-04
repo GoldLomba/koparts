@@ -608,6 +608,56 @@ function EngineDesktopStickyBar({ engine }: { engine: Engine }) {
   );
 }
 
+const WHY_ITEMS = [
+  {
+    emoji: '💸',
+    text: 'Не трать деньги на ремонт старого ржавого двигателя — поставь',
+    highlight: 'НОВЫЙ двигатель',
+    tail: 'и забудь о проблемах.',
+  },
+  {
+    emoji: '🔧',
+    text: 'Ремонт сегодня — поломка завтра.',
+    highlight: 'НОВЫЙ двигатель',
+    tail: '— решение на годы.',
+  },
+  {
+    emoji: '🛡️',
+    text: 'Купи новый двигатель с гарантией 12 месяцев и',
+    highlight: 'забудь о ремонтах.',
+    tail: '',
+  },
+];
+
+function WhyNewEngine() {
+  return (
+    <section className="bg-text py-14 md:py-18">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-snug">
+            Зачем ремонтировать,<br className="hidden sm:block" /> если можно поставить новый?
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {WHY_ITEMS.map((item, i) => (
+            <div
+              key={i}
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col gap-4"
+            >
+              <div className="text-4xl">{item.emoji}</div>
+              <p className="text-white/90 text-base leading-relaxed font-medium">
+                {item.text}{' '}
+                <span className="text-accent font-extrabold">{item.highlight}</span>
+                {item.tail && ' ' + item.tail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function MidPageCTA({ engine }: { engine: Engine }) {
   return (
     <section className="bg-gradient-to-r from-primary-dark to-primary py-10">
@@ -676,6 +726,7 @@ export default function EnginePage() {
       <Variants engine={engine} />
       <FeaturesAndApps engine={engine} />
       <Specs engine={engine} />
+      <WhyNewEngine />
       <MidPageCTA engine={engine} />
       <ReviewPhotos engine={engine} />
       <Delivery />
