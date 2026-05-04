@@ -725,8 +725,8 @@ export default function EnginePage() {
       <Hero engine={engine} />
       <Variants engine={engine} />
       <FeaturesAndApps engine={engine} />
-      <Specs engine={engine} />
       <WhyNewEngine />
+      <Specs engine={engine} />
       <MidPageCTA engine={engine} />
       <ReviewPhotos engine={engine} />
       <Delivery />
