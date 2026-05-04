@@ -64,8 +64,8 @@ function Hero({ engine }: { engine: Engine }) {
 
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-green/10 text-green text-sm font-semibold px-3 py-1.5 rounded-full mb-5">
-              <span className="w-2 h-2 bg-green rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 bg-green text-white text-sm font-extrabold px-3.5 py-2 rounded-full mb-5 shadow-md shadow-green/30">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
               В наличии на складе в Москве
             </div>
 
