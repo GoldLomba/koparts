@@ -478,6 +478,65 @@ function Specs({ engine }: { engine: Engine }) {
 
 const BASE = import.meta.env.BASE_URL;
 
+function DiscountCTA() {
+  return (
+    <section className="bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 py-16 md:py-20 relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-25 pointer-events-none"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 20% 20%, white 0%, transparent 40%), radial-gradient(circle at 80% 70%, white 0%, transparent 45%)',
+        }}
+      />
+      <div className="max-w-4xl mx-auto px-4 text-center relative">
+        <div className="inline-flex items-center gap-2 bg-text/15 text-text text-xs font-extrabold px-3 py-1.5 rounded-full mb-5 uppercase tracking-wide">
+          <span>🎁</span> Специальное предложение
+        </div>
+        <h2 className="text-3xl md:text-5xl font-extrabold text-text leading-tight">
+          Узнайте, как получить{' '}
+          <span className="text-primary whitespace-nowrap">скидку 5%</span>
+        </h2>
+        <p className="text-text mt-5 text-base md:text-lg max-w-2xl mx-auto font-medium">
+          Позвоните или напишите нам{' '}
+          <span className="inline-block bg-text text-yellow-300 font-extrabold px-2.5 py-0.5 rounded-md">
+            «Хочу скидку 5%»
+          </span>
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+          <a
+            href="tel:+79382060824"
+            className="inline-flex items-center justify-center gap-2 bg-text text-white font-bold px-7 py-3.5 rounded-xl hover:bg-primary transition text-base shadow-lg shadow-black/20"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Позвонить
+          </a>
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-white text-text font-bold px-7 py-3.5 rounded-xl hover:bg-bg-light transition text-base border-2 border-text/10"
+          >
+            <TelegramIcon className="w-5 h-5 text-[#0088cc]" />
+            Telegram
+          </a>
+          <a
+            href={MAX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-white text-text font-bold px-7 py-3.5 rounded-xl hover:bg-bg-light transition text-base border-2 border-text/10"
+          >
+            <MaxIcon className="w-5 h-5 rounded" />
+            MAX
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Stars({ rating }: { rating: number }) {
   return (
     <div className="inline-flex items-center gap-0.5" aria-label={`Рейтинг ${rating} из 5`}>
@@ -742,6 +801,7 @@ export default function EnginePage() {
       <MidPageCTA engine={engine} />
       <ReviewPhotos engine={engine} />
       <Delivery />
+      <DiscountCTA />
       <Contact />
       <EngineDesktopStickyBar engine={engine} />
     </>
