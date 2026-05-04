@@ -32,6 +32,8 @@ export type Engine = {
   fits: string[];
   /** Hero paragraph on the dedicated page */
   description: string;
+  /** Optional short volume label shown next to engine code in the H1 (e.g. "0.8 литров") */
+  volumeLabel?: string;
   variants?: Variant[];
   specs: SpecRow[];
   applications: Application[];
@@ -66,6 +68,7 @@ export const engines: Engine[] = [
     fits: ['Daewoo Matiz', 'Chevrolet Spark'],
     description:
       'Компактный и экономичный 3-цилиндровый мотор для Daewoo Matiz и Chevrolet Spark. Доступен в двух исполнениях — под катушку зажигания и под трамблёр. Только новые двигатели в заводской упаковке.',
+    volumeLabel: '0.8 литров',
     variants: [
       {
         badge: 'Под катушку',

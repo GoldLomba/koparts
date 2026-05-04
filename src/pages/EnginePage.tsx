@@ -78,6 +78,9 @@ function Hero({ engine }: { engine: Engine }) {
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text leading-tight">
               Двигатель <span className="text-primary">{engine.code}</span>
+              {engine.volumeLabel && (
+                <span className="text-text-secondary font-bold"> {engine.volumeLabel}</span>
+              )}
             </h1>
 
             <p className="text-lg md:text-xl text-text-secondary mt-4 max-w-xl mx-auto lg:mx-0">
