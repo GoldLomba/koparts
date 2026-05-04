@@ -6,6 +6,8 @@ export type Variant = {
   price: string;
   features: string[];
   fits: string[];
+  /** Optional variant-specific photo (path inside /public). */
+  image?: string;
 };
 
 export type SpecRow = { label: string; value: string };
@@ -78,6 +80,7 @@ export const engines: Engine[] = [
           'Стабильный пуск в любую погоду',
         ],
         fits: ['Daewoo Matiz (2000–2015)', 'Chevrolet Spark (2005–2010)'],
+        image: 'f8cv-coil.jpg',
       },
       {
         badge: 'Под трамблёр',

@@ -195,12 +195,21 @@ function VariantCard({
   return (
     <article className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
       <div className="relative h-56 bg-bg-light flex items-center justify-center">
-        <EnginePhoto
-          code={engine.code}
-          cylinders={engine.cylinders}
-          accentColor={engine.brandColor}
-          className="w-full h-full max-h-52 object-contain px-4 py-3"
-        />
+        {v.image ? (
+          <img
+            src={`${import.meta.env.BASE_URL}${v.image}`}
+            alt={v.title}
+            loading="lazy"
+            className="w-full h-full max-h-52 object-contain px-4 py-3"
+          />
+        ) : (
+          <EnginePhoto
+            code={engine.code}
+            cylinders={engine.cylinders}
+            accentColor={engine.brandColor}
+            className="w-full h-full max-h-52 object-contain px-4 py-3"
+          />
+        )}
         <span
           className={`absolute top-3 left-3 ${v.badgeBg} text-white text-xs font-bold px-2.5 py-1 rounded-md`}
         >
