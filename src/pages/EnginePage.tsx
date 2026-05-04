@@ -145,7 +145,8 @@ function Hero({ engine }: { engine: Engine }) {
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mt-10 max-w-md mx-auto lg:mx-0">
+            {/* Trust badges — mobile/tablet only */}
+            <div className="grid lg:hidden grid-cols-3 gap-4 mt-10 max-w-md mx-auto">
               {[
                 { icon: '🛡️', title: 'Гарантия', sub: '12 месяцев' },
                 { icon: '📋', title: 'Декларация', sub: 'для ГИБДД' },
@@ -160,8 +161,23 @@ function Hero({ engine }: { engine: Engine }) {
             </div>
           </div>
 
-          <div className="flex-1 flex justify-center w-full">
+          <div className="flex-1 flex flex-col items-center w-full">
             <EngineCanvas engine={engine} className="w-full max-w-md aspect-[4/3]" />
+
+            {/* Trust badges — desktop only (under photo) */}
+            <div className="hidden lg:grid grid-cols-3 gap-4 mt-8 w-full max-w-md">
+              {[
+                { icon: '🛡️', title: 'Гарантия', sub: '12 месяцев' },
+                { icon: '📋', title: 'Декларация', sub: 'для ГИБДД' },
+                { icon: '🚚', title: 'Доставка', sub: 'По всей РФ' },
+              ].map((b) => (
+                <div key={b.title} className="text-center">
+                  <div className="text-2xl mb-1">{b.icon}</div>
+                  <div className="text-sm font-semibold text-text">{b.title}</div>
+                  <div className="text-xs text-text-secondary">{b.sub}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
