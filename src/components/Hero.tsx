@@ -59,6 +59,13 @@ export default function Hero() {
               </div>
             </div>
 
+            <div className="mt-4 flex justify-center lg:justify-start">
+              <div className="inline-flex items-center gap-2 bg-yellow-400 text-text font-extrabold px-3.5 py-2 rounded-lg text-sm shadow-md shadow-yellow-400/40 ring-1 ring-yellow-500/30">
+                <span className="text-base animate-pulse">⚡</span>
+                Отгружаем в день оплаты при заказе до 16:00
+              </div>
+            </div>
+
             {/* Trust badges — mobile/tablet only (under text on small screens) */}
             <div className="grid lg:hidden grid-cols-3 gap-4 mt-10 max-w-md mx-auto">
               {[
