@@ -9,6 +9,62 @@ import { findEngineBySlug, type Engine, type Variant } from '../data/engines';
 const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtmUjt9s7_BVCaEo';
 const TELEGRAM_URL = 'https://t.me/+79382060824';
 
+const RECENT_ORDERS = [
+  'Иван из Краснодара заказал 2 часа назад',
+  'Алексей из Москвы заказал 45 минут назад',
+  'Дмитрий из Казани заказал 3 часа назад',
+  'Сергей из Санкт-Петербурга заказал 1 час назад',
+  'Павел из Воронежа заказал 5 часов назад',
+  'Максим из Екатеринбурга заказал вчера',
+  'Руслан из Самары заказал 4 часа назад',
+  'Андрей из Новосибирска заказал 6 часов назад',
+  'Михаил из Уфы заказал сегодня утром',
+  'Виктор из Ростова-на-Дону заказал 2 дня назад',
+  'Олег из Перми заказал 8 часов назад',
+  'Артём из Волгограда заказал вчера вечером',
+];
+
+function SocialProof({ monthlySold = 37 }: { monthlySold?: number }) {
+  const [idx, setIdx] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIdx((i) => (i + 1) % RECENT_ORDERS.length);
+        setVisible(true);
+      }, 350);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="mt-4 flex flex-col gap-2 items-center lg:items-start">
+      {/* Monthly counter */}
+      <div className="inline-flex items-center gap-2 bg-primary/8 border border-primary/20 rounded-lg px-3.5 py-2 text-sm">
+        <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+        <span className="text-text-secondary">Продано в этом месяце:</span>
+        <span className="font-extrabold text-primary">{monthlySold} штук</span>
+      </div>
+
+      {/* Recent order ticker */}
+      <div className="inline-flex items-center gap-2 bg-bg-light border border-border rounded-lg px-3.5 py-2 text-sm min-w-0 max-w-full">
+        <span className="w-2 h-2 bg-green rounded-full flex-shrink-0 animate-pulse" />
+        <span
+          className={`text-text font-medium truncate transition-opacity duration-300 ${
+            visible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {RECENT_ORDERS[idx]}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function EngineCanvas({
   engine,
   className = '',
@@ -107,6 +163,8 @@ function Hero({ engine }: { engine: Engine }) {
               <span className="text-base animate-pulse">⚡</span>
               Отгружаем в день оплаты при заказе до 14:00
             </div>
+
+            <SocialProof />
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
               <a
