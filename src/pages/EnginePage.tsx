@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Delivery from '../components/Delivery';
 import Contact from '../components/Contact';
@@ -8,6 +8,30 @@ import { findEngineBySlug, type Engine, type Variant } from '../data/engines';
 
 const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtmUjt9s7_BVCaEo';
 const TELEGRAM_URL = 'https://t.me/+79382060824';
+
+const RU_MONTHS_GENITIVE = [
+  'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+  'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',
+];
+
+/** Deterministic pseudo-random integer in [1..5] for a given date. */
+function dailyIncrement(year: number, month: number, day: number): number {
+  let x = year * 10000 + (month + 1) * 100 + day;
+  x = (x * 9301 + 49297) % 233280;
+  return Math.floor((x / 233280) * 5) + 1;
+}
+
+/** Sales counter: starts at 4 on day 1 of the month, +1..5 deterministic daily. */
+function computeMonthlySold(now: Date): { count: number; dateLabel: string } {
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const day = now.getDate();
+  let count = 4;
+  for (let d = 2; d <= day; d++) {
+    count += dailyIncrement(year, month, d);
+  }
+  return { count, dateLabel: `${day} ${RU_MONTHS_GENITIVE[month]}` };
+}
 
 const RECENT_ORDERS = [
   'Иван, Краснодар — 2 ч. назад',
@@ -24,9 +48,10 @@ const RECENT_ORDERS = [
   'Артём, Волгоград — вчера',
 ];
 
-function SocialProof({ monthlySold = 37 }: { monthlySold?: number }) {
+function SocialProof() {
   const [idx, setIdx] = useState(0);
   const [visible, setVisible] = useState(true);
+  const { count, dateLabel } = useMemo(() => computeMonthlySold(new Date()), []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -47,7 +72,8 @@ function SocialProof({ monthlySold = 37 }: { monthlySold?: number }) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
         <span className="text-text-secondary">Продано в этом месяце:</span>
-        <span className="font-extrabold text-primary">{monthlySold} штук</span>
+        <span className="font-extrabold text-primary">{count} штук</span>
+        <span className="text-text-secondary text-xs">· {dateLabel}</span>
       </div>
 
       {/* Recent order ticker */}
