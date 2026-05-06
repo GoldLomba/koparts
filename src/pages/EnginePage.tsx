@@ -10,18 +10,18 @@ const MAX_URL = 'https://max.ru/u/f9LHodD0cOLqAXpgA53WqMtakiGF0eK1GAp67QiTkmHbtm
 const TELEGRAM_URL = 'https://t.me/+79382060824';
 
 const RECENT_ORDERS = [
-  'Иван из Краснодара заказал 2 часа назад',
-  'Алексей из Москвы заказал 45 минут назад',
-  'Дмитрий из Казани заказал 3 часа назад',
-  'Сергей из Санкт-Петербурга заказал 1 час назад',
-  'Павел из Воронежа заказал 5 часов назад',
-  'Максим из Екатеринбурга заказал вчера',
-  'Руслан из Самары заказал 4 часа назад',
-  'Андрей из Новосибирска заказал 6 часов назад',
-  'Михаил из Уфы заказал сегодня утром',
-  'Виктор из Ростова-на-Дону заказал 2 дня назад',
-  'Олег из Перми заказал 8 часов назад',
-  'Артём из Волгограда заказал вчера вечером',
+  'Иван, Краснодар — 2 ч. назад',
+  'Алексей, Москва — 45 мин. назад',
+  'Дмитрий, Казань — 3 ч. назад',
+  'Сергей, СПб — 1 ч. назад',
+  'Павел, Воронеж — 5 ч. назад',
+  'Максим, Екатеринбург — вчера',
+  'Руслан, Самара — 4 ч. назад',
+  'Андрей, Новосибирск — 6 ч. назад',
+  'Михаил, Уфа — сегодня утром',
+  'Виктор, Ростов — 2 дня назад',
+  'Олег, Пермь — 8 ч. назад',
+  'Артём, Волгоград — вчера',
 ];
 
 function SocialProof({ monthlySold = 37 }: { monthlySold?: number }) {
@@ -51,10 +51,10 @@ function SocialProof({ monthlySold = 37 }: { monthlySold?: number }) {
       </div>
 
       {/* Recent order ticker */}
-      <div className="inline-flex items-center gap-2 bg-bg-light border border-border rounded-lg px-3.5 py-2 text-sm min-w-0 max-w-full">
+      <div className="flex items-center gap-2 bg-bg-light border border-border rounded-lg px-3.5 py-2 text-sm w-72">
         <span className="w-2 h-2 bg-green rounded-full flex-shrink-0 animate-pulse" />
         <span
-          className={`text-text font-medium truncate transition-opacity duration-300 ${
+          className={`text-text font-medium overflow-hidden whitespace-nowrap transition-opacity duration-300 ${
             visible ? 'opacity-100' : 'opacity-0'
           }`}
         >
