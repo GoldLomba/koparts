@@ -890,7 +890,7 @@ function VideoReviewCTA() {
           {/* Text */}
           <div className="relative flex-1 text-center md:text-left">
             <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-3 uppercase tracking-wide">
-              <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+              <span className="w-1.5 h-1.5 bg-green rounded-full animate-pulse" />
               Бесплатно
             </div>
             <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
