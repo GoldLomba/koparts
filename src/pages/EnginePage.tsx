@@ -856,6 +856,86 @@ function WhyNewEngine() {
   );
 }
 
+function VideoReviewCTA() {
+  return (
+    <section className="bg-white py-14 md:py-18 border-y border-border">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="bg-gradient-to-br from-primary-dark via-primary to-primary-light rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden shadow-xl shadow-primary/20">
+          {/* Background glow */}
+          <div
+            className="absolute inset-0 opacity-20 pointer-events-none"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 10% 30%, white 0%, transparent 50%), radial-gradient(circle at 90% 70%, white 0%, transparent 50%)',
+            }}
+          />
+
+          {/* Icon block */}
+          <div className="relative flex-shrink-0 w-24 h-24 md:w-28 md:h-28 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center ring-2 ring-white/30">
+            <svg
+              className="w-12 h-12 md:w-14 md:h-14 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
+              />
+            </svg>
+          </div>
+
+          {/* Text */}
+          <div className="relative flex-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-3 uppercase tracking-wide">
+              <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+              Бесплатно
+            </div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+              Заказать видеообзор двигателя онлайн
+            </h2>
+            <p className="text-white/85 mt-2 text-base md:text-lg font-medium">
+              В живую покажем ваш двигатель — состояние, маркировку и комплектацию
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center md:justify-start">
+              <a
+                href="tel:+79382060824"
+                className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-6 py-3 rounded-xl hover:bg-bg-light transition text-sm shadow-lg shadow-black/15"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Позвонить
+              </a>
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/15 transition text-sm"
+              >
+                <TelegramIcon className="w-4 h-4" />
+                Telegram
+              </a>
+              <a
+                href={MAX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/15 transition text-sm"
+              >
+                <MaxIcon className="w-5 h-5 rounded" />
+                MAX
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function MidPageCTA({ engine }: { engine: Engine }) {
   return (
     <section className="bg-gradient-to-r from-primary-dark to-primary py-10">
@@ -924,6 +1004,7 @@ export default function EnginePage() {
       <Variants engine={engine} />
       <FeaturesAndApps engine={engine} />
       <WhyNewEngine />
+      <VideoReviewCTA />
       <Specs engine={engine} />
       <MidPageCTA engine={engine} />
       <ReviewPhotos engine={engine} />
