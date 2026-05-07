@@ -560,6 +560,49 @@ function Specs({ engine }: { engine: Engine }) {
   );
 }
 
+function FAQSection({ engine }: { engine: Engine }) {
+  const [open, setOpen] = useState<number | null>(null);
+  if (!engine.faq?.length) return null;
+  return (
+    <section className="bg-bg-light py-16 md:py-20">
+      <div className="max-w-3xl mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-text text-center mb-10">
+          Часто задаваемые вопросы
+        </h2>
+        <div className="space-y-3">
+          {engine.faq.map((item, i) => (
+            <div key={i} className="bg-white border border-border rounded-2xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left hover:bg-bg-light transition-colors"
+              >
+                <span className="font-semibold text-text text-sm md:text-base">{item.q}</span>
+                <svg
+                  className={`w-5 h-5 text-text-secondary flex-shrink-0 transition-transform duration-200 ${
+                    open === i ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {open === i && (
+                <div className="px-6 pb-5 text-text-secondary text-sm leading-relaxed border-t border-border pt-4">
+                  {item.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const BASE = import.meta.env.BASE_URL;
 
 function DiscountCTA() {
@@ -884,6 +927,7 @@ export default function EnginePage() {
       <Specs engine={engine} />
       <MidPageCTA engine={engine} />
       <ReviewPhotos engine={engine} />
+      <FAQSection engine={engine} />
       <Delivery />
       <DiscountCTA />
       <Contact />
