@@ -77,7 +77,7 @@ export default function Contact() {
               </svg>
             </div>
             <h3 className="text-base font-bold text-text">Склад / Самовывоз</h3>
-            <p className="text-text font-semibold mt-2">г. Москва</p>
+            <p className="text-text font-semibold mt-2">г.Москва / Мытищи</p>
             <p className="text-xs text-text-secondary mt-1">Адрес уточняйте по телефону</p>
           </div>
         </div>
